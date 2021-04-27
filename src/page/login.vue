@@ -32,8 +32,8 @@ export default {
     data() {
         return {
             loginForm: {
-                username: '',
-                password: '',
+                username: 'admin',
+                password: 'admin',
             },
 			//验证表单数据规则   
 			//rules与表单内容当中的	:rules属性值要相同

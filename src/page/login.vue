@@ -38,7 +38,7 @@ export default {
 			//验证表单数据规则   
 			//rules与表单内容当中的	:rules属性值要相同
 			//prop 参数必须与规则当中的name属性一致
-			//blur 失去焦点时候验证
+			//blur 失去焦点时候验证 
             rules: {
                 username: [
                     { required: true, message: '请输入用户名', trigger: 'blur' },

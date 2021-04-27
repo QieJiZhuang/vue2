@@ -32,11 +32,11 @@ export default {
     data() {
         return {
             loginForm: {
-                username: '',
-                password: '',
+                username: 'admin',
+                password: 'admin',
             },
 			//验证表单数据规则   
-			//rules与表单内容当中的	:rules属性值要相同
+			//rules与表单内容当中的	:rules属性值要相同  1
 			//prop 参数必须与规则当中的name属性一致
 			//blur 失去焦点时候验证 
             rules: {

@@ -11,14 +11,22 @@
             </div>
         </div>
         <div>
-            <h1>mock数据</h1>
-            <div v-for="item of list">
-                <div>id:{{item.id}}</div>
-                <div>年龄：{{item.age}}</div>
-                <div>姓名：{{item.name}}</div>
-                <div>工作:{{item.job}}</div>
-                <div><button @click="fun(item.id)">点击</button></div>
-                <hr>
+            <el-table ref="multipleTable" :data="list" tooltip-effect="dark" style="width: 100%" @selection-change="handleSelectionChange">
+                <el-table-column type="selection" width="55">
+                </el-table-column>
+                <el-table-column label="ID" >
+                    <template slot-scope="scope">{{ scope.row.id }}</template>
+                </el-table-column>
+                <el-table-column prop="name" label="姓名" width="120">
+                </el-table-column>
+                <el-table-column prop="job" label="工作" show-overflow-tooltip>
+                </el-table-column>
+                <el-table-column prop="age" sortable label="年龄" show-overflow-tooltip>
+                </el-table-column>
+            </el-table>
+            <div style="margin-top: 20px">
+                <el-button @click="toggleSelection([list[1], list[2]])">切换第二、第三行的选中状态</el-button>
+                <el-button @click="toggleSelection()">取消选择</el-button>
             </div>
         </div>
 
@@ -64,8 +72,21 @@ export default {
                 }
             })
         },
-        fun(id){
-            console.log("id="+id);
+        fun(id) {
+            console.log("id=" + id);
+        },
+        toggleSelection(rows) {
+            if (rows) {
+                console.log(rows);
+                rows.forEach(row => {
+                    this.$refs.multipleTable.toggleRowSelection(row);
+                });
+            } else {
+                this.$refs.multipleTable.clearSelection();
+            }
+        },
+        handleSelectionChange(val) {
+            this.multipleSelection = val;
         }
     },
     watch: {

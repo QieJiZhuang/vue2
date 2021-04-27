@@ -1,6 +1,6 @@
 <template>
     <div v-cloak >
-		{{number +1}}
+		{{number +1}}11
     </div>
 </template>
 

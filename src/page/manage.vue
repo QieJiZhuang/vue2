@@ -43,6 +43,7 @@
 					<el-submenu index="9">
 						<template slot="title"><i class="el-icon-warning"></i>vue</template>
 						<el-menu-item index="vue">vue</el-menu-item>
+						<el-menu-item index="lunbo">轮播</el-menu-item>
 					</el-submenu>
 				</el-menu>
 			</el-col>

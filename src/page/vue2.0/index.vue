@@ -12,9 +12,9 @@
         </div>
         <div>
             <el-table ref="multipleTable" :data="list" tooltip-effect="dark" style="width: 100%" @selection-change="handleSelectionChange">
-                <el-table-column type="selection" width="55">
+                <el-table-column type="selection" index="" width="55">
                 </el-table-column>
-                <el-table-column label="ID" >
+                <el-table-column label="ID">
                     <template slot-scope="scope">{{ scope.row.id }}</template>
                 </el-table-column>
                 <el-table-column prop="name" label="姓名" width="120">
@@ -26,10 +26,14 @@
             </el-table>
             <div style="margin-top: 20px">
                 <el-button @click="toggleSelection([list[1], list[2]])">切换第二、第三行的选中状态</el-button>
-                <el-button @click="toggleSelection()">取消选择</el-button>
+                <el-button @select="" @click="toggleSelection()">取消选择</el-button>
             </div>
         </div>
 
+        <h1>过滤数据</h1>
+        <div v-for="item in sortNumber">
+            {{item}}
+        </div>
     </div>
 </template>
 
@@ -48,6 +52,7 @@ export default {
                 { id: 3, name: "qj3", pwd: 123, age: 45 },
                 { id: 4, name: "qjz4", pwd: 1234, age: 46 },
             ],
+            numberArr: [1, 3, 2, 4, 5, 5, 6],
             list: null
         }
     },
@@ -88,6 +93,7 @@ export default {
         handleSelectionChange(val) {
             this.multipleSelection = val;
         }
+
     },
     watch: {
     },
@@ -97,6 +103,15 @@ export default {
             return setInterval(() => {
                 this.number += 5;
             }, 1000);
+        },
+        sortNumber: function () {
+            // return this.numberArr.filters(function () {
+            //     return this.numberArr.sort();
+            // })
+
+            return this.numberArr.filter(function (number) {
+                return number % 2 === 0
+            })
         }
     },
     beforeUpdate() {

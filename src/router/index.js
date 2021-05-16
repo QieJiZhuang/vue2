@@ -111,6 +111,10 @@ const routes = [
 			path: '/lunbo',
 			component: lunbo,
 			meta: ['lunbo', 'lunbo'],
+		},
+		{
+			path: '/html',
+			component: () => import('../page/html/index.vue'),
 		}
 
 		]
